@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from 'react'
+import {createContext, useContext, useEffect, useState} from 'react'
 import {useWebRTC} from './WebRTCContext.jsx'
 
 const TrackerStateContext = createContext(null);
@@ -150,7 +150,7 @@ export const TrackerStateProvider = ({children}) => {
       darkDesertHint: {x:19.8, y:82.2, state: '✔️'},
     }
   });
-  const {onDataReceived, onDataChannelSetup} = useWebRTC();
+  const {subscribe, onDataChannelSetup} = useWebRTC();
   const [currentWorld, setCurrentWorld] = useState("☀️");
   const [selectedEntranceName, setSelectedEntranceName] = useState(null);
   const getSelectedEntrance = () => {
@@ -179,8 +179,12 @@ export const TrackerStateProvider = ({children}) => {
     // Add more options as needed
   };
 
-  onDataReceived.push(handleUpdate);
-  onDataChannelSetup.push(fullSync)
+  useEffect(() => {
+    const unsubscribe = subscribe(handleUpdate);
+    return () => unsubscribe();
+  }, [])
+  
+  onDataChannelSetup.push(fullSync);
 
   function fullSync() {
     return {type: 'full-sync', state};
