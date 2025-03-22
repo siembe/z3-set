@@ -26,7 +26,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void handleTextMessage(@NonNull WebSocketSession session, TextMessage message) throws Exception {
-        log.info("📡 Received: {}", message.getPayload());
+        log.trace("📡 Received: {}", message.getPayload());
 
         Signal signal = objectMapper.readValue(message.getPayload(), Signal.class);
 

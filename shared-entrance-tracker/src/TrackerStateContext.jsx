@@ -160,6 +160,25 @@ export const TrackerStateProvider = ({children}) => {
     return state[currentWorld][selectedEntranceName];
   }
 
+  const iconOptions = {
+    "✔️": {icon: "✔️"},
+    "❌": {icon: "❌"},
+    "paradoxTop": {icon: "./entrances/paradox_top.png"},
+    "paradoxMid": {icon: "./entrances/paradox_middle.png"},
+    "paradoxBottom": {icon: "./entrances/paradox_bottom.png"},
+    "icon1": {icon: "./assets/icon1.png"},
+    "icon2": {icon: "./assets/icon2.png"},
+    "icon3": {icon: "./assets/icon3.png"},
+    "icon4": {icon: "./assets/icon4.png"},
+    "icon5": {icon: "./assets/icon5.png"},
+    "icon6": {icon: "./assets/icon6.png"},
+    "icon7": {icon: "./assets/icon7.png"},
+    "icon8": {icon: "./assets/icon8.png"},
+    "icon9": {icon: "./assets/icon9.png"},
+    "icon10": {icon: "./assets/icon10.png"},
+    // Add more options as needed
+  };
+
   onDataReceived.push(handleUpdate);
   onDataChannelSetup.push(fullSync)
 
@@ -200,7 +219,7 @@ export const TrackerStateProvider = ({children}) => {
   }
 
   return (
-    <TrackerStateContext.Provider value={{state, selectedEntranceName, setSelectedEntranceName, currentWorld, setCurrentWorld, getSelectedEntrance}}>
+    <TrackerStateContext.Provider value={{state, selectedEntranceName, setSelectedEntranceName, currentWorld, setCurrentWorld, iconOptions, getSelectedEntrance}}>
       {children}
     </TrackerStateContext.Provider>
   );
