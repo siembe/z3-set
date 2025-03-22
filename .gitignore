@@ -1,0 +1,63 @@
+# === Global ===
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files
+.env
+.env.*.local
+
+# === Node / React / Vite Frontend ===
+
+# Node modules
+/shared-entrance-tracker/node_modules/
+
+# Build output
+/shared-entrance-tracker/dist/
+
+# Yarn
+.yarn/*
+
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+.yarn/install-state.gz
+.yarn/build-state.yml
+.yarn/unplugged/
+
+.pnp.*
+
+# Lock files (optional – keep if using consistent installs)
+/shared-entrance-tracker/package-lock.json
+/shared-entrance-tracker/yarn.lock
+/shared-entrance-tracker/pnpm-lock.yaml
+
+# === Java / Spring Backend ===
+
+# Compiled class files
+/signal-server/build/
+**/*.class
+
+# Gradle (if used)
+.gradle/
+**/build/
+
+# IDE-specific
+.idea/
+*.iml
+*.iws
+
+# === Misc ===
+# Ignore test coverage reports
+coverage/
+*.lcov
