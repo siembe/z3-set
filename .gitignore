@@ -24,16 +24,16 @@ pnpm-debug.log*
 /shared-entrance-tracker/dist/
 
 # Yarn
-.yarn/*
+/shared-entrance-tracker/.yarn/*
 
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+!/shared-entrance-tracker/.yarn/releases
+!/shared-entrance-tracker/.yarn/plugins
+!/shared-entrance-tracker/.yarn/sdks
+!/shared-entrance-tracker/.yarn/versions
 
-.yarn/install-state.gz
-.yarn/build-state.yml
-.yarn/unplugged/
+/shared-entrance-tracker/.yarn/install-state.gz
+/shared-entrance-tracker/.yarn/build-state.yml
+/shared-entrance-tracker/.yarn/unplugged/
 
 .pnp.*
 
