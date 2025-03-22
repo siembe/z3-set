@@ -160,7 +160,7 @@ export const TrackerStateProvider = ({children}) => {
     return state[currentWorld][selectedEntranceName];
   }
 
-  const iconOptions = {
+  const entranceOptions = {
     "✔️": {icon: "✔️"},
     "❌": {icon: "❌"},
     "paradoxTop": {icon: "./entrances/paradox_top.png"},
@@ -179,11 +179,17 @@ export const TrackerStateProvider = ({children}) => {
     // Add more options as needed
   };
 
+  const itemOptions = {
+    "powerGloves": {icon: "./items/power_gloves.png"},
+    "titanMitts": {icon: "./items/titan_mitts.png"},
+    "moonPearl": {icon: "./items/moon_pearl.png"}
+  }
+
   useEffect(() => {
     const unsubscribe = subscribe(handleUpdate);
     return () => unsubscribe();
   }, [])
-  
+
   onDataChannelSetup.push(fullSync);
 
   function fullSync() {
@@ -215,6 +221,17 @@ export const TrackerStateProvider = ({children}) => {
           },
         },
       }));
+    } else if (data.type === "item-change") {
+      setState((prevState) => ({
+        ...prevState,
+        [data.world]: {
+          ...prevState[data.world],
+          [data.entranceName]: {
+            ...prevState[data.world][data.entranceName],
+            items: data.items,
+          },
+        },
+      }));
     } else if (data.type === "full-sync") {
       setState(data.state);
     }
@@ -223,7 +240,7 @@ export const TrackerStateProvider = ({children}) => {
   }
 
   return (
-    <TrackerStateContext.Provider value={{state, selectedEntranceName, setSelectedEntranceName, currentWorld, setCurrentWorld, iconOptions, getSelectedEntrance}}>
+    <TrackerStateContext.Provider value={{state, selectedEntranceName, setSelectedEntranceName, currentWorld, setCurrentWorld, entranceOptions, itemOptions, getSelectedEntrance}}>
       {children}
     </TrackerStateContext.Provider>
   );

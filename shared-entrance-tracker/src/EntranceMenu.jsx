@@ -4,15 +4,15 @@ import {useWebRTC} from "./WebRTCContext.jsx";
 
 
 const EntranceMenu = () => {
-  const {state, currentWorld, selectedEntranceName, iconOptions} = useTrackerState();
+  const {state, currentWorld, selectedEntranceName, entranceOptions} = useTrackerState();
   const {sendUpdate} = useWebRTC();
 
-  function handleSelection(selectedIcon) {
+  function handleSelection(selectedEntrance) {
     const update = {
       type: "state-change",
       world: currentWorld,
       entranceName: selectedEntranceName,
-      newState: selectedIcon,
+      newState: selectedEntrance,
     }
 
     sendUpdate(update);
@@ -29,7 +29,7 @@ const EntranceMenu = () => {
     <>
       <div className={"container-header"}><h3>Entrances</h3></div>
       <div className="entrances-container container">
-        {Object.entries(iconOptions).map(([key, value], index) =>
+        {Object.entries(entranceOptions).map(([key, value], index) =>
             key === "❌" || key === "✔️" ? (
                 <button
                     className={"entrance-menu-icon" + isSelected(value)}

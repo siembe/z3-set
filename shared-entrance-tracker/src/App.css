@@ -329,4 +329,19 @@ textarea:active {
   border-color: white;
 }
 
+.item-menu-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  padding: 3px;
+  border: 2px solid transparent;
+  margin: 2px;
+  filter: grayscale(100%);
+}
 
+.item-menu-icon.selected {
+  filter: grayscale(0%);
+}

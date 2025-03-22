@@ -1,9 +1,8 @@
 import {useTrackerState} from "./TrackerStateContext.jsx";
 
 const Entrances = () => {
-    const {state, currentWorld, iconOptions} = useTrackerState();
+    const {state, currentWorld, entranceOptions, selectedEntranceName, setSelectedEntranceName} = useTrackerState();
     const entranceList = Object.entries(state?.[currentWorld] ?? {});
-    const {selectedEntranceName, setSelectedEntranceName} = useTrackerState();
 
     function handleClick(entranceName) {
         setSelectedEntranceName(entranceName);
@@ -25,7 +24,7 @@ const Entrances = () => {
                             break;
                         default:
                             color = "transparent";
-                            image = iconOptions[entrance.state].icon
+                            image = entranceOptions[entrance.state].icon
                     }
 
                     return image === null ? (
